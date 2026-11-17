@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ganadores Space Apps Sangolquí 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: mission-control board — orbit hero, stepped podium, ranked log, 10-award grid. Single dark look for projection. */
+:root{
+  --void:#070b16; --panel:#0e1527; --line:#1f2a45; --ink:#e8ecf7; --mute:#8b96b5;
+  --red:#e5383b; --red-bg:rgba(229,56,59,.12);
+  --gold:#f2c14e; --silver:#c9d3e6; --bronze:#d9875a; --flare:#ff6a3d; --sky:#5aa9ff;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--void);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;overflow-x:hidden}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px;display:grid;gap:72px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:.95;letter-spacing:.01em}
+header{display:grid;gap:14px}
+header h1{font-size:clamp(44px,8vw,104px);font-weight:900;text-transform:uppercase}
+header h1 span{color:var(--flare)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:13px;color:var(--mute)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+button{font:500 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--line);padding:10px 16px;border-radius:4px;cursor:pointer}
+button:hover{border-color:var(--sky)}
+button:focus-visible,.reveal:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+button.primary{background:var(--flare);border-color:var(--flare);color:#140600;font-weight:600}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:28px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.sec-head h2{font-size:clamp(32px,5vw,56px);font-weight:800;text-transform:uppercase}
+.sec-head p{margin:0;color:var(--mute);max-width:52ch;font-size:14px}
+
+/* Podium */
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;align-items:end;gap:16px}
+.step{display:grid;gap:0}
+.step .who{display:grid;gap:10px;padding:0 4px 16px}
+.block{border:1px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0;display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:clamp(56px,9vw,110px);line-height:1}
+.p1 .block{height:220px;color:var(--gold);background:linear-gradient(180deg,rgba(242,193,78,.18),rgba(242,193,78,.02))}
+.p2 .block{height:160px;color:var(--silver);background:linear-gradient(180deg,rgba(201,211,230,.14),rgba(201,211,230,.02))}
+.p3 .block{height:120px;color:var(--bronze);background:linear-gradient(180deg,rgba(217,135,90,.16),rgba(217,135,90,.02))}
+.team{display:grid;gap:4px}
+.team .name{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.2vw,40px);text-transform:uppercase;line-height:1}
+.team .sub{font-family:var(--mono);font-size:12px;color:var(--mute)}
+.score{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:22px;font-weight:500}
+.score small{font-size:12px;color:var(--mute);font-weight:400}
+.p1 .score{color:var(--gold)} .p2 .score{color:var(--silver)} .p3 .score{color:var(--bronze)}
+.judges{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.judges div{border:1px solid var(--line);border-radius:3px;padding:4px 6px;font-family:var(--mono);font-size:11px;color:var(--mute);display:grid}
+.judges b{color:var(--ink);font-weight:500;font-size:13px;font-variant-numeric:tabular-nums}
+.tie{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);border:1px dashed var(--bronze);border-radius:3px;padding:2px 6px;justify-self:start}
+.p3 .who{gap:16px}
+.excluded .inner{border:2px solid var(--red);border-radius:6px;padding:12px;background:var(--red-bg)}
+.excluded .name{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px;color:var(--mute)}
+.excluded .score{color:var(--mute)!important}
+.ex-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:3px;padding:2px 6px;justify-self:start}
+.ex-note{font-size:13px;color:#ffb3b3;line-height:1.4}
+tr.ex td{background:var(--red-bg);color:var(--mute)}
+tr.ex td:first-child{box-shadow:inset 3px 0 0 var(--red)}
+tr.ex .tm{text-decoration:line-through;text-decoration-color:var(--red)}
+tr.ex .ex-tag{margin-left:8px;font-size:10px}
+
+/* Reveal mechanics */
+.reveal{position:relative;cursor:default}
+.ceremony .reveal.hidden{cursor:pointer}
+.reveal .cover{display:none}
+.ceremony .reveal.hidden .cover{display:grid;position:absolute;inset:0;place-items:center;border:1px dashed var(--line);border-radius:6px;background:var(--panel);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);z-index:2;text-align:center;padding:8px}
+.ceremony .reveal.hidden .cover::before{content:"";display:block;width:10px;height:10px;border-radius:50%;background:var(--flare);margin:0 auto 8px;box-shadow:0 0 0 0 var(--flare);animation:ping 1.6s infinite}
+.reveal.shown .inner{animation:land .7s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,106,61,.6)}100%{box-shadow:0 0 0 14px rgba(255,106,61,0)}}
+@keyframes land{0%{transform:translateY(18px) scale(.96);opacity:.2}100%{transform:none;opacity:1}}
+
+/* Ranking table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:rgba(14,21,39,.7)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;min-width:640px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:400}
+td.num,th.num{text-align:right;font-family:var(--mono)}
+tr:last-child td{border-bottom:0}
+td.pos{font-family:var(--display);font-weight:800;font-size:22px;width:56px}
+tr.medal-1 td.pos{color:var(--gold)} tr.medal-2 td.pos{color:var(--silver)} tr.medal-3 td.pos{color:var(--bronze)}
+td .tm{font-weight:600}
+td .id{font-family:var(--mono);font-size:12px;color:var(--mute);margin-left:8px}
+.pen{color:var(--flare)}
+
+/* Categories */
+.awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.award{border:1px solid var(--line);border-radius:6px;background:rgba(14,21,39,.75);min-height:220px}
+.award .inner{padding:18px;display:grid;gap:12px;height:100%;align-content:start}
+.award .cat{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.award .cat h3{font-size:24px;font-weight:800;text-transform:uppercase;color:var(--sky)}
+.award .cat .n{font-family:var(--mono);font-size:12px;color:var(--mute)}
+.award .desc{font-size:13px;color:var(--mute);margin:0}
+.weights{display:flex;height:6px;border-radius:3px;overflow:hidden;gap:2px}
+.weights i{display:block}
+.w-rcd{background:#5aa9ff}.w-iet{background:#9b7bff}.w-ir{background:#3fd0a4}.w-stp{background:#ff6a3d}
+.award .win{border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+.award .win .name{font-family:var(--display);font-size:28px;font-weight:800;text-transform:uppercase;line-height:1}
+.award .win .score{font-size:16px;color:var(--gold)}
+.award.pending .win .name{color:var(--mute);font-size:22px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.weights-tbl td.num{font-size:15px}
+.weights-tbl td.top{color:var(--gold);font-weight:600}
+.weights-tbl td.tot{color:var(--mute)}
+.staff-tbl{min-width:1100px}
+.staff-tbl td{font-size:13px;padding:9px 12px}
+.staff-tbl td.neg{color:var(--flare)}
+.staff-tbl td.zero{color:var(--mute)}
+.staff-tbl td.tot{font-weight:600}
+.staff-tbl td.obs{color:#ffb3b3;font-size:12px;max-width:260px}
+.jueces-tbl{min-width:820px}
+.jueces-tbl td{font-size:13px;padding:9px 12px}
+.jueces-tbl td.hi{color:var(--gold)}
+.jueces-tbl td.lo{color:var(--flare)}
+.jueces-tbl td.avg{font-weight:600}
+.jueces-tbl td.na{color:var(--mute);font-style:italic}
+.rank-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:14px}
+.rank-tools input{font:14px var(--body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:9px 12px;width:min(320px,100%)}
+.rank-tools input:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+.rank-tbl{min-width:1280px}
+.rank-tbl td{font-size:13px;padding:9px 10px}
+.rank-tbl th{padding:0}
+.rank-tbl th button{all:unset;box-sizing:border-box;display:flex;gap:6px;align-items:center;width:100%;padding:11px 10px;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.rank-tbl th.num button{justify-content:flex-end}
+.rank-tbl th button:hover{color:var(--ink)}
+.rank-tbl th button:focus-visible{outline:2px solid var(--sky);outline-offset:-2px}
+.rank-tbl th[aria-sort] button{color:var(--sky)}
+.rank-tbl th .arr{font-size:10px;opacity:.5}
+.rank-tbl th[aria-sort] .arr{opacity:1}
+.rank-tbl td.sorted{background:rgba(90,169,255,.07)}
+.rank-tbl td.won{color:var(--gold);font-weight:600}
+.rank-tbl td.best{font-weight:600}
+.rank-tbl tr.ex td{background:var(--red-bg)}
+.rules{margin:0 0 24px;padding-left:22px;display:grid;gap:8px;max-width:80ch;color:var(--ink)}
+.rules li::marker{font-family:var(--display);font-weight:800;color:var(--flare)}
+.rules b{color:var(--sky);font-weight:600}
+.sim{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:20px;align-items:start}
+.sim-main{min-width:0;display:grid;gap:12px}
+.sim-bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.sim-btns{display:flex;flex-wrap:wrap;gap:8px}
+.sim-btns button:disabled{opacity:.35;cursor:not-allowed}
+.sim-msg{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:4px;background:var(--panel);padding:12px 14px;font-size:14px;min-height:48px}
+.sim-msg b{color:var(--gold)}
+.sim-wrap{max-height:560px;overflow:auto}
+.sim-tbl{min-width:860px}
+.sim-tbl th,.sim-tbl td{padding:5px 8px;font-size:12px;text-align:right;font-family:var(--mono);transition:background .3s,color .3s,opacity .3s}
+.sim-tbl thead th{position:sticky;top:0;background:var(--panel);z-index:2;font-size:10px}
+.sim-tbl th.cat-done{color:var(--gold)}
+.sim-tbl td.team{text-align:left;font-family:var(--body);font-size:13px;white-space:nowrap;position:sticky;left:0;background:var(--panel);z-index:1}
+.sim-tbl td.dead{color:#3a4566;text-decoration:line-through}
+.sim-tbl td.cur{background:var(--gold);color:#1a1200;font-weight:600;animation:land .5s}
+.sim-tbl td.won{background:rgba(242,193,78,.2);color:var(--gold);font-weight:600;box-shadow:inset 0 0 0 1px var(--gold)}
+.sim-tbl tr.row-done td.team{color:var(--gold)}
+.sim-tbl tr.row-dead td.team{color:#4a5577}
+.sim-tbl tr.excl td{background:var(--red-bg);color:#7a5560}
+.sim-tbl tr.excl td.team{color:#ff8a8a;background:#2a1018}
+.sim-legend i{border-radius:2px}
+.sim-log{border:1px solid var(--line);border-radius:6px;background:rgba(14,21,39,.75);padding:14px 16px;display:grid;gap:10px;position:sticky;top:16px}
+.sim-log ol{margin:0;padding-left:22px;display:grid;gap:6px;font-size:13px}
+.sim-log li{opacity:.35}
+.sim-log li.done{opacity:1}
+.sim-log li.now{opacity:1;color:var(--gold)}
+.sim-log li span{font-family:var(--mono);font-size:12px;color:var(--mute)}
+@media (max-width:900px){.sim{grid-template-columns:1fr}.sim-log{position:static}}
+footer{font-family:var(--mono);font-size:12px;color:var(--mute);border-top:1px solid var(--line);padding-top:16px;display:grid;gap:4px}
+
+@media (max-width:720px){
+  .podium{grid-template-columns:1fr;align-items:stretch}
+  .p1{order:-1}
+  .block{height:72px!important;font-size:52px;border-radius:6px;border-bottom:1px solid var(--line)}
+  .step{gap:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal.shown .inner{animation:none}
+  .ceremony .reveal.hidden .cover::before{animation:none}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<main class="wrap" id="app">
+  <header>
+    <div class="eyebrow">NASA Space Apps Challenge · Sede Sangolquí · ESPE</div>
+    <h1>Ganadores <span>2026</span></h1>
+    <div class="meta">
+      <span>34 equipos · 33 evaluados</span>
+      <span>4 grupos de jueces · RCD · IET · IR · STP</span>
+      <span>Escala 1.00 – 5.00</span>
+    </div>
+  </header>
+
+  <section aria-labelledby="h-podio">
+    <div class="sec-head">
+      <h2 id="h-podio">Podio general</h2>
+      <p>Promedio de los 4 jueces (1–5) ajustado por penalización del Staff, según la hoja “Top 10 General”.</p>
+    </div>
+    <div class="podium" id="podium"></div>
+  </section>
+
+  <section aria-labelledby="h-top">
+    <div class="sec-head">
+      <h2 id="h-top">Top 10 general</h2>
+      <p>Empates exactos comparten puesto.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Equipo</th><th>Aula</th><th>Grupo</th><th class="num">Prom. jueces</th><th class="num">Penal. staff</th><th class="num">Final (1–5)</th></tr></thead>
+        <tbody id="top10"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-cat">
+    <div class="sec-head">
+      <h2 id="h-cat">Las 10 categorías</h2>
+      <p>Un ganador por categoría. Puntaje en escala base 100, ponderado con los pesos de cada categoría (hoja “Ranking por Categoría”).</p>
+    </div>
+    <div class="legend" style="margin-bottom:16px">
+      <span><i class="w-rcd"></i>RCD · Rigor científico</span>
+      <span><i class="w-iet"></i>IET · Innovación técnica</span>
+      <span><i class="w-ir"></i>IR · Impacto</span>
+      <span><i class="w-stp"></i>STP · Storytelling</span>
+    </div>
+    <div class="awards" id="awards"></div>
+  </section>
+
+  <section aria-labelledby="h-sim">
+    <div class="sec-head">
+      <h2 id="h-sim">Cómo se eligieron</h2>
+      <p>Cada equipo puede ganar una sola categoría y cada categoría tiene un solo ganador. Los ganadores salen en orden, de la nota más alta a la más baja.</p>
+    </div>
+    <ol class="rules">
+      <li><b>Buscar la nota más alta.</b> Se mira toda la tabla de puntajes (todos los equipos × las 10 categorías) y se toma el valor más alto que siga disponible.</li>
+      <li><b>Asignar el premio.</b> Ese equipo gana esa categoría.</li>
+      <li><b>Eliminar fila y columna.</b> El equipo sale de la tabla porque ya tiene premio, y la categoría también porque ya tiene ganador.</li>
+      <li><b>Repetir</b> con lo que queda hasta que las 10 categorías tengan ganador. Si un equipo empata consigo mismo en dos categorías, se toma la de menor número.</li>
+    </ol>
+    <div class="sim">
+      <div class="sim-main">
+        <div class="sim-bar">
+          <div class="sim-btns">
+            <button type="button" id="sim-reset">Reiniciar</button>
+            <button type="button" id="sim-prev">◀ Anterior</button>
+            <button type="button" class="primary" id="sim-next">Siguiente paso ▶</button>
+            <button type="button" id="sim-play">Reproducir</button>
+          </div>
+          <span class="eyebrow" id="sim-step"></span>
+        </div>
+        <div class="sim-msg" id="sim-msg" aria-live="polite"></div>
+        <div class="tbl-wrap sim-wrap">
+          <table class="sim-tbl"><thead id="sim-head"></thead><tbody id="sim-body"></tbody></table>
+        </div>
+        <div class="legend sim-legend">
+          <span><i style="background:var(--gold)"></i>Nota más alta de este paso</span>
+          <span><i style="background:rgba(242,193,78,.25);border:1px solid var(--gold)"></i>Ganador de un paso anterior</span>
+          <span><i style="background:var(--line)"></i>Eliminado (fila o columna ya usada)</span>
+          <span><i style="background:var(--red)"></i>No considerado</span>
+        </div>
+      </div>
+      <aside class="sim-log">
+        <div class="eyebrow">Orden de selección</div>
+        <ol id="sim-log"></ol>
+      </aside>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-pesos">
+    <div class="sec-head">
+      <h2 id="h-pesos">Pesos de la rúbrica</h2>
+      <p>Pesos de la rúbrica por categoría oficial NASA. Cada juez califica un área y su nota se pondera según la categoría.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="weights-tbl">
+        <thead><tr><th>Categoría oficial NASA</th><th class="num">RCD (Juez 1)</th><th class="num">IET (Juez 2)</th><th class="num">IR (Juez 3)</th><th class="num">STP (Juez 4)</th><th class="num">Total peso</th></tr></thead>
+        <tbody id="pesos"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-staff">
+    <div class="sec-head">
+      <h2 id="h-staff">Auditoría de penalizaciones</h2>
+      <p>Listado de equipos y auditoría del Staff. Control previo de 09:30 a 10:45 AM, con deducciones objetivas de 0 a −8 puntos.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="staff-tbl">
+        <thead><tr><th>ID</th><th>Equipo</th><th>Sala</th><th>Grupo jueces</th><th class="num">1. Datos NASA (−2)</th><th class="num">2. Repo/Lic (−2)</th><th class="num">3. Links (−1)</th><th class="num">4. Slides/Video (−1)</th><th class="num">5. IA/Logos (−1)</th><th class="num">6. Idioma ES/EN (−1)</th><th class="num">Total</th><th>Observación</th></tr></thead>
+        <tbody id="staff"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-jueces">
+    <div class="sec-head">
+      <h2 id="h-jueces">Calificación de los jueces</h2>
+      <p>Consolidado de los 4 jueces. Cada juez especializado califica de 1.0 a 5.0 en su área: RCD, IET, IR o STP.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="jueces-tbl">
+        <thead><tr><th>ID</th><th>Equipo</th><th>Aula</th><th>Grupo</th><th class="num">Juez 1: RCD</th><th class="num">Juez 2: IET</th><th class="num">Juez 3: IR</th><th class="num">Juez 4: STP</th><th class="num">Promedio 4 jueces</th></tr></thead>
+        <tbody id="jueces"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-rank">
+    <div class="sec-head">
+      <h2 id="h-rank">Ranking por categoría</h2>
+      <p>Puntaje base 100 de cada equipo en las 10 categorías. Haz clic en cualquier encabezado para ordenar de mayor a menor; otro clic invierte el orden.</p>
+    </div>
+    <div class="rank-tools">
+      <label for="rank-q" class="eyebrow">Buscar equipo</label>
+      <input id="rank-q" type="search" placeholder="Nombre o ID, ej. EQ-18" autocomplete="off">
+      <span class="eyebrow" id="rank-count"></span>
+    </div>
+    <div class="tbl-wrap">
+      <table class="rank-tbl">
+        <thead><tr id="rank-head"></tr></thead>
+        <tbody id="rank-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>Fuente: nasa_space_apps_sangolqui_2026.xlsx · Comité de Jueces NASA Space Apps Challenge Sangolquí 2026 (ESPE)</span>
+    <span>Jaguar nova (EQ-11) no tiene calificaciones registradas y no participa en el ranking.</span>
+    <span>BDB Innovations (EQ-25) no fue tomado en cuenta para la premiación porque no subió la documentación esperada.</span>
+  </footer>
+</main>
+
+<script>
+/* ===== DATOS (valores tal cual del Excel) ===== */
+const MOTIVO_BDB = "No fue tomado en cuenta para la premiación porque no subió la documentación esperada.";
+const PODIO = [
+  {pos:1, id:"EQ-18", name:"Bio prodigios",   aula:"Aula 04", grupo:"Grupo 2", final:4.8,  j:[4.2,5,5,5]},
+  {pos:2, id:"EQ-32", name:"Aquarela team",   aula:"Aula 05", grupo:"Grupo 4", final:4.6,  j:[4.2,4.4,4.8,5]},
+  {pos:3, id:"EQ-27", name:"Sputnik",         aula:"Aula 05", grupo:"Grupo 3", final:4.45, j:[3.8,5,4.4,4.6]},];
+const TOP = [
+  ["EQ-18","Bio prodigios","Aula 04","Grupo 2",4.8,0,4.8],
+  ["EQ-32","Aquarela team","Aula 05","Grupo 4",4.6,0,4.6],
+  ["EQ-27","Sputnik","Aula 05","Grupo 3",4.45,0,4.45],
+  ["EQ-25","BDB Innovations","Aula 06","Grupo 3",4.45,-8,4.45,MOTIVO_BDB],
+  ["EQ-01","Compu Max evolution","Aula 02","Grupo 1",3.9825,-8,4.3825],
+  ["EQ-02","Condor mission","Aula 05","Grupo 1",3.9,-8,4.3],
+  ["EQ-30","Entropia O","Aula 06","Grupo 3",4.1325,0,4.1325],
+  ["EQ-20","Code engineers","Aula 06","Grupo 2",4.115,0,4.115],
+  ["EQ-16","Na za","Aula 02","Grupo 2",4,-1,4.05],
+  ["EQ-14","Aliados","Aula 08","Grupo 2",3.9825,-1,4.0325],
+  ["EQ-15","Ikiam sustainable tech","Aula 06","Grupo 2",3.9825,-1,4.0325],
+];
+// w = [RCD, IET, IR, STP]; win = null → por definir
+const CATS = [
+  {n:1, t:"Best Use of Data", d:"Hace accesibles los datos espaciales o los aprovecha en una aplicación única.", w:[50,20,15,15], win:{id:"EQ-16",name:"Na za",aula:"Aula 02",score:86.6}},
+  {n:2, t:"Best Use of Science", d:"El mejor y más válido uso de la ciencia y del método científico.", w:[50,20,20,10], win:{id:"EQ-14",name:"Aliados",aula:"Aula 08",score:83.26}},
+  {n:3, t:"Best Use of Technology", d:"El uso más innovador de la tecnología.", w:[20,50,15,15], win:{id:"EQ-27",name:"Sputnik",aula:"Aula 05",score:92.2}},
+  {n:4, t:"Best Mission Concept", d:"El concepto y diseño de misión más plausible.", w:[25,35,25,15], win:{id:"EQ-20",name:"Code engineers",aula:"Aula 06",score:80.58}},
+  {n:5, t:"Galactic Impact", d:"Mayor potencial para mejorar la vida en la Tierra o en el universo.", w:[15,15,50,20], win:{id:"EQ-02",name:"Condor mission",aula:"Aula 05",score:88.2}},
+  {n:6, t:"Best Storytelling", d:"Comunica de forma más creativa el potencial de los datos abiertos.", w:[15,15,20,50], win:{id:"EQ-32",name:"Aquarela team",aula:"Aula 05",score:95.0}},
+  {n:7, t:"Art & Technology", d:"Combina de forma más efectiva habilidades técnicas y creativas.", w:[15,40,15,30], win:{id:"EQ-01",name:"Compu Max evolution",aula:"Aula 02",score:89.78}},
+  {n:8, t:"Global Connection", d:"Conecta mejor a las personas alrededor del mundo mediante la tecnología.", w:[15,15,45,25], win:{id:"EQ-22",name:"Trend tronic",aula:"Aula 05",score:82.82}},
+  {n:9, t:"Local Impact", d:"Mayor potencial de impacto local directo.", w:[15,15,50,20], win:{id:"EQ-30",name:"Entropia O",aula:"Aula 06",score:86.12}},
+  {n:10, t:"Most Inspirational", d:"El proyecto que cautiva nuestros corazones.", w:[10,15,25,50], win:{id:"EQ-18",name:"Bio prodigios",aula:"Aula 04",score:98.4}},
+];
+
+/* ===== RENDER ===== */
+const fmt = (v,d=2)=>Number(v).toFixed(d);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const AREAS=["RCD","IET","IR","STP"];
+
+function teamHTML(t, tie){
+  if(t.ex) return `<div class="reveal excluded" tabindex="0"><div class="cover">Aviso<br>clic para revelar</div><div class="inner team">
+    <span class="ex-tag">No considerado</span>
+    <div class="name">${esc(t.name)}</div>
+    <div class="sub">${t.id} · ${t.aula} · ${t.grupo}</div>
+    <div class="score">${fmt(t.final)} <small>/ 5</small></div>
+    <div class="judges">${t.j.map((v,i)=>`<div>${AREAS[i]}<b>${fmt(v)}</b></div>`).join("")}</div>
+    <div class="ex-note">${esc(t.ex)}</div>
+  </div></div>`;
+  return `<div class="reveal" tabindex="0" data-order="${t.pos}"><div class="cover">Puesto ${t.pos}<br>clic para revelar</div><div class="inner team">
+    ${tie?'<span class="tie">Empate</span>':''}
+    <div class="name">${esc(t.name)}</div>
+    <div class="sub">${t.id} · ${t.aula} · ${t.grupo}</div>
+    <div class="score">${fmt(t.final)} <small>/ 5</small></div>
+    <div class="judges">${t.j.map((v,i)=>`<div>${AREAS[i]}<b>${fmt(v)}</b></div>`).join("")}</div>
+  </div></div>`;
+}
+const byPos = p=>PODIO.filter(t=>t.pos===p);
+document.getElementById("podium").innerHTML = [2,1,3].map(p=>{
+  const ts=byPos(p);
+  const tie = ts.filter(t=>!t.ex).length>1;
+  return `<div class="step p${p}"><div class="who">${ts.map(t=>teamHTML(t, tie)).join("")}</div><div class="block">${p}</div></div>`;
+}).join("");
+
+let prev=null, rank=0, counted=0;
+document.getElementById("top10").innerHTML = TOP.map(r=>{
+  if(r[7]) return `<tr class="ex" title="${esc(r[7])}"><td class="pos">—</td><td><span class="tm">${esc(r[1])}</span><span class="id">${r[0]}</span><span class="ex-tag">No considerado</span></td><td>${r[2]}</td><td>${r[3]}</td><td class="num">${fmt(r[4],3)}</td><td class="num">${r[5]}</td><td class="num">${fmt(r[6],3)}</td></tr>`;
+  counted++;
+  if(r[6]!==prev){rank=counted;prev=r[6];}
+  return `<tr class="medal-${rank}"><td class="pos">${rank}</td><td><span class="tm">${esc(r[1])}</span><span class="id">${r[0]}</span></td><td>${r[2]}</td><td>${r[3]}</td><td class="num">${fmt(r[4],3)}</td><td class="num ${r[5]?'pen':''}">${r[5]}</td><td class="num"><b>${fmt(r[6],3)}</b></td></tr>`;
+}).join("");
+
+document.getElementById("awards").innerHTML = CATS.map(c=>`
+  <article class="award reveal ${c.win?'':'pending'}" tabindex="0">
+    <div class="cover">${esc(c.t)}<br>clic para revelar</div>
+    <div class="inner">
+      <div class="cat"><h3>${esc(c.t)}</h3><span class="n">${String(c.n).padStart(2,"0")}/10</span></div>
+      <p class="desc">${esc(c.d)}</p>
+      <div class="weights" title="RCD ${c.w[0]}% · IET ${c.w[1]}% · IR ${c.w[2]}% · STP ${c.w[3]}%">
+        ${c.w.map((v,i)=>`<i class="w-${AREAS[i].toLowerCase()}" style="flex:${v}"></i>`).join("")}
+      </div>
+      <div class="win">${c.win
+        ? `<div class="name">${esc(c.win.name)}</div><div class="sub" style="font-family:var(--mono);font-size:12px;color:var(--mute)">${c.win.id} · ${c.win.aula}</div><div class="score">${fmt(c.win.score)} <small>/ 100</small></div>`
+        : `<div class="name">Por definir</div><div class="sub" style="font-family:var(--mono);font-size:12px;color:var(--mute)">Ningún equipo tiene esta como su mejor categoría</div>`}
+      </div>
+    </div>
+  </article>`).join("");
+
+document.getElementById("pesos").innerHTML = CATS.map(c=>{
+  const mx=Math.max(...c.w);
+  return `<tr><td><span class="tm">${c.n}. ${esc(c.t)}</span></td>${c.w.map(v=>`<td class="num ${v===mx?'top':''}">${v}%</td>`).join("")}<td class="num tot">${c.w.reduce((a,b)=>a+b,0)}%</td></tr>`;
+}).join("");
+
+// [id, equipo, sala, grupo jueces, p1..p6 (null = vacío), total, observación]
+const STAFF = [
+  ["EQ-11","Jaguar nova","Aula 02","May",-2,-2,-1,-1,-1,-1,-8,"NO CARGÓ ARCHIVOS"],
+  ["EQ-31","Debug industries","Aula 02","Edelina",-2,-2,-1,-1,-1,-1,-8,"No tiene documentación requerida"],
+  ["EQ-25","BDB Innovations","Aula 06","Stefany",-2,-2,-1,-1,-1,-1,-8,"NO CARGÓ ARCHIVOS"],
+  ["EQ-07","Kitty program","Aula 05","Aaron",null,-2,-1,-1,-1,0,-5,""],
+  ["EQ-12","Hydro space ikiam","Aula 05","May",-2,-2,-1,0,0,0,-5,"NO HAY FICHA TÉCNICA"],
+  ["EQ-21","Halo sur","Aula 02","Naye",-2,-2,0,0,0,0,-4,""],
+  ["EQ-03","Olimpus","Aula 04","Aaron",0,-2,-1,0,0,0,-3,"NO ABREN LINK GITHUB"],
+  ["EQ-13","Nantu phase","Aula 04","May",0,-2,-1,0,0,0,-3,""],
+  ["EQ-23","Los protectores de la tierra","Aula 04","Stefany",0,-2,-1,0,0,0,-3,"NO HAY PROYECTO EN REPOSITORIO"],
+  ["EQ-34","Robot planet Ecuador","Aula 08","Edelina",0,-2,-1,0,0,0,-3,""],
+  ["EQ-26","Bazinga x hola mundo","Aula 02","Stefany",-2,0,0,0,0,0,-2,"Links de dato de la NASA no se abren"],
+  ["EQ-02","Condor mission","Aula 05","Aaron",0,0,0,0,0,-1,-1,""],
+  ["EQ-06","Bio amigos","Aula 02","Aaron",0,0,0,0,0,-1,-1,""],
+  ["EQ-09","Amaru nova","Aula 08","May",0,0,-1,0,0,0,-1,""],
+  ["EQ-10","Bio fusion","Aula 06","May",0,0,0,0,0,-1,-1,""],
+  ["EQ-15","Ikiam sustainable tech","Aula 06","Naye",0,0,-1,0,0,0,-1,""],
+  ["EQ-19","Georgina's sons","Aula 08","Naye",0,0,-1,0,0,0,-1,""],
+  ["EQ-01","Compu Max evolution","Aula 02","Aaron",0,0,0,0,0,0,0,""],
+  ["EQ-04","Centinelas del vacío","Aula 08","Aaron",0,0,0,0,0,0,0,""],
+  ["EQ-05","The last neuron","Aula 06","Aaron",0,0,0,0,0,0,0,""],
+  ["EQ-08","Bio ñaños","Aula 04","May",0,0,0,0,0,0,0,""],
+  ["EQ-14","Aliados","Aula 08","May",0,0,0,0,0,0,0,""],
+  ["EQ-16","Na za","Aula 02","Naye",0,0,0,0,0,0,0,""],
+  ["EQ-17","Ski horizons","Aula 05","Naye",0,0,0,0,0,0,0,""],
+  ["EQ-18","Bio prodigios","Aula 04","Naye",0,0,0,0,0,0,0,""],
+  ["EQ-20","Code engineers","Aula 06","Naye",0,0,0,0,0,0,0,""],
+  ["EQ-22","Trend tronic","Aula 05","Stefany",0,0,0,0,0,0,0,""],
+  ["EQ-24","Starship troopers NSAC","Aula 08","Stefany",0,0,0,0,0,0,0,""],
+  ["EQ-27","Sputnik","Aula 05","Stefany",0,0,0,0,0,0,0,""],
+  ["EQ-28","SCAE 1","Aula 04","Stefany",0,0,0,0,0,0,0,""],
+  ["EQ-29","Stars gate plus","Aula 08","Edelina",0,0,0,0,0,0,0,""],
+  ["EQ-30","Entropia O","Aula 06","Edelina",0,0,0,0,0,0,0,""],
+  ["EQ-32","Aquarela team","Aula 05","Edelina",0,0,0,0,0,0,0,""],
+  ["EQ-33","Mars path","Aula 04","Edelina",0,0,0,0,0,0,0,""],
+];
+const cell = v => v===null ? `<td class="num zero">—</td>` : `<td class="num ${v<0?'neg':'zero'}">${v}</td>`;
+document.getElementById("staff").innerHTML = STAFF.map(r=>`<tr>
+  <td><span class="id" style="margin:0">${r[0]}</span></td><td><span class="tm">${esc(r[1])}</span></td><td>${r[2]}</td><td>${r[3]}</td>
+  ${r.slice(4,10).map(cell).join("")}
+  <td class="num tot ${r[10]<0?'neg':'zero'}">${r[10]}</td>
+  <td class="obs">${esc(r[11])}</td></tr>`).join("");
+
+// [id, equipo, aula, grupo, RCD, IET, IR, STP] (null = sin calificación)
+const JUECES = [
+  ["EQ-01","Compu Max evolution","Aula 02","Grupo 1",3.8,4.2,3.6,4.33],
+  ["EQ-02","Condor mission","Aula 05","Grupo 1",3.4,4,4.2,4],
+  ["EQ-03","Olimpus","Aula 04","Grupo 1",3.4,3.4,3.6,3.66],
+  ["EQ-04","Centinelas del vacío","Aula 08","Grupo 1",2.6,4.2,3.6,2.66],
+  ["EQ-05","The last neuron","Aula 06","Grupo 1",4.2,3.6,3,3.33],
+  ["EQ-06","Bio amigos","Aula 02","Grupo 1",4.6,2.2,3.8,4.66],
+  ["EQ-07","Kitty program","Aula 05","Grupo 1",3.4,2.8,3.66,3.67],
+  ["EQ-08","Bio ñaños","Aula 04","Grupo 1",3.4,3.6,4.4,3.33],
+  ["EQ-09","Amaru nova","Aula 08","Grupo 1",4,2.8,4.4,3],
+  ["EQ-10","Bio fusion","Aula 06","Grupo 1",4.2,3.4,3.6,3.66],
+  ["EQ-11","Jaguar nova","Aula 02","Grupo 2",null,null,null,null],
+  ["EQ-12","Hydro space ikiam","Aula 05","Grupo 2",3.6,3,3.4,3],
+  ["EQ-13","Nantu phase","Aula 04","Grupo 2",1.8,1.6,1,3.66],
+  ["EQ-14","Aliados","Aula 08","Grupo 2",4.2,4,4.4,3.33],
+  ["EQ-15","Ikiam sustainable tech","Aula 06","Grupo 2",3.8,3.8,4,4.33],
+  ["EQ-16","Na za","Aula 02","Grupo 2",4.8,4,2.2,5],
+  ["EQ-17","Ski horizons","Aula 05","Grupo 2",4,2.4,3.8,3],
+  ["EQ-18","Bio prodigios","Aula 04","Grupo 2",4.2,5,5,5],
+  ["EQ-19","Georgina's sons","Aula 08","Grupo 2",3.8,3.6,3.6,3.66],
+  ["EQ-20","Code engineers","Aula 06","Grupo 2",4.4,3.8,3.6,4.66],
+  ["EQ-21","Halo sur","Aula 02","Grupo 3",3.6,2.2,3.8,5],
+  ["EQ-22","Trend tronic","Aula 05","Grupo 3",4,3.4,4.33,4.33],
+  ["EQ-23","Los protectores de la tierra","Aula 04","Grupo 3",3.2,3.4,4.2,3.33],
+  ["EQ-24","Starship troopers NSAC","Aula 08","Grupo 3",3.4,3.2,4.2,4],
+  ["EQ-25","BDB Innovations","Aula 06","Grupo 3",4,3.8,5,5],
+  ["EQ-26","Bazinga x hola mundo","Aula 02","Grupo 3",4.2,2.4,3.4,4.66],
+  ["EQ-27","Sputnik","Aula 05","Grupo 3",3.8,5,4.4,4.6],
+  ["EQ-28","SCAE 1","Aula 04","Grupo 3",4,3.4,4.4,3.33],
+  ["EQ-29","Stars gate plus","Aula 08","Grupo 3",2.4,3,3.6,3.67],
+  ["EQ-30","Entropia O","Aula 06","Grupo 3",4,3.6,4.6,4.33],
+  ["EQ-31","Debug industries","Aula 02","Grupo 4",3.8,3,3,3.67],
+  ["EQ-32","Aquarela team","Aula 05","Grupo 4",4.2,4.4,4.8,5],
+  ["EQ-33","Mars path","Aula 04","Grupo 4",1.6,4.8,4,4.67],
+  ["EQ-34","Robot planet Ecuador","Aula 08","Grupo 4",1.6,3.6,3.8,3.67],
+];
+const jcell = v => v===null ? `<td class="num na">—</td>` : `<td class="num ${v>=4.5?'hi':v<2.5?'lo':''}">${fmt(v)}</td>`;
+document.getElementById("jueces").innerHTML = JUECES.map(r=>{
+  const s=r.slice(4,8), ok=s.every(v=>v!==null);
+  const avg = ok ? `<td class="num avg">${fmt(s.reduce((a,b)=>a+b,0)/4)}</td>` : `<td class="num na">Sin calificación</td>`;
+  return `<tr><td><span class="id" style="margin:0">${r[0]}</span></td><td><span class="tm">${esc(r[1])}</span></td><td>${r[2]}</td><td>${r[3]}</td>${s.map(jcell).join("")}${avg}</tr>`;
+}).join("");
+
+/* ===== RANKING POR CATEGORÍA (ordenable) ===== */
+// [id, equipo, cat1..cat10, mejor categoría, puntaje mejor]
+const RANK = [
+  ["EQ-18","Bio prodigios",92.00,92.00,96.80,96.00,97.60,97.60,97.60,97.60,97.60,98.40,"10. Most Inspirational",98.40],
+  ["EQ-32","Aquarela team",89.00,88.80,90.20,90.80,93.80,95.00,92.20,94.00,93.80,95.60,"10. Most Inspirational",95.60],
+  ["EQ-25","BDB Innovations",85.20,85.20,84.00,86.60,93.40,93.40,87.40,93.40,93.40,94.40,"10. Most Inspirational",94.40],
+  ["EQ-27","Sputnik",85.00,84.80,92.20,89.80,88.80,90.00,92.20,89.00,88.80,90.60,"3. Best Use of Technology",92.20],
+  ["EQ-01","Compu Max evolution",86.59,85.86,88.99,87.39,85.32,89.70,89.78,86.05,85.32,89.50,"7. Art & Technology",89.78],
+  ["EQ-02","Condor mission",82.60,82.80,86.20,86.00,88.20,87.00,86.80,88.00,88.20,87.80,"5. Galactic Impact",88.20],
+  ["EQ-16","Na za",86.60,83.80,81.80,79.00,69.40,86.20,84.00,72.20,69.40,83.60,"1. Best Use of Data",86.60],
+  ["EQ-30","Entropia O",81.19,81.46,78.79,81.19,86.12,84.50,80.58,85.85,86.12,85.10,"5. Galactic Impact",86.12],
+  ["EQ-20","Code engineers",83.98,82.92,80.38,80.58,79.24,85.60,82.36,80.30,79.24,84.80,"6. Best Storytelling",85.60],
+  ["EQ-06","Bio amigos",83.18,82.32,68.78,74.38,80.04,85.20,73.76,80.90,80.04,84.40,"6. Best Storytelling",85.20],
+  ["EQ-33","Mars path",61.21,60.54,80.41,75.61,77.88,81.90,83.22,78.55,77.88,84.30,"10. Most Inspirational",84.30],
+  ["EQ-15","Ikiam sustainable tech",79.19,78.86,79.19,79.59,81.12,83.10,80.78,81.45,81.12,83.30,"10. Most Inspirational",83.30],
+  ["EQ-14","Aliados",82.19,83.26,80.99,81.99,82.92,76.50,78.78,81.85,82.92,76.70,"2. Best Use of Science",83.26],
+  ["EQ-22","Trend tronic",79.58,79.58,75.98,78.44,82.82,82.82,78.17,82.82,82.82,83.15,"10. Most Inspirational",83.15],
+  ["EQ-21","Halo sur",71.20,70.00,62.80,67.40,75.40,82.60,69.80,76.60,75.40,82.80,"10. Most Inspirational",82.80],
+  ["EQ-08","Bio ñaños",74.59,75.66,75.79,77.19,81.32,74.90,75.18,80.25,81.32,75.90,"5. Galactic Impact",81.32],
+  ["EQ-26","Bazinga x hola mundo",75.78,74.52,64.98,68.78,72.44,80.00,69.96,73.70,72.44,79.20,"6. Best Storytelling",80.00],
+  ["EQ-28","SCAE 1",76.79,77.86,73.19,75.79,79.52,73.10,72.38,78.45,79.52,73.50,"5. Galactic Impact",79.52],
+  ["EQ-09","Amaru nova",76.40,77.80,69.20,73.60,79.40,71.00,68.60,78.00,79.40,71.40,"5. Galactic Impact",79.40],
+  ["EQ-05","The last neuron",79.39,79.06,75.79,75.19,70.72,72.70,74.38,71.05,70.72,71.50,"1. Best Use of Data",79.39],
+  ["EQ-10","Bio fusion",79.38,79.32,74.58,75.78,75.44,75.80,74.56,75.50,75.44,75.20,"1. Best Use of Data",79.38],
+  ["EQ-24","Starship troopers NSAC",71.40,71.60,70.20,72.40,77.80,76.60,72.40,77.60,77.80,77.40,"5. Galactic Impact",77.80],
+  ["EQ-03","Olimpus",74.38,74.32,74.38,74.78,76.04,76.40,75.16,76.10,76.04,76.60,"10. Most Inspirational",76.60],
+  ["EQ-04","Centinelas del vacío",66.58,67.52,76.18,73.38,72.04,66.40,73.16,71.10,72.04,67.40,"3. Best Use of Technology",76.18],
+  ["EQ-23","Los protectores de la tierra",68.19,69.06,69.39,70.79,75.12,69.90,69.38,74.25,75.12,70.90,"5. Galactic Impact",75.12],
+  ["EQ-19","Georgina's sons",74.18,74.12,72.98,73.18,72.84,73.20,72.96,72.90,72.84,73.00,"1. Best Use of Data",74.18],
+  ["EQ-07","Kitty program",70.19,70.18,66.59,68.91,72.88,72.94,68.60,72.89,72.88,73.20,"10. Most Inspirational",73.20],
+  ["EQ-17","Ski horizons",70.00,70.80,60.40,64.80,69.20,64.40,60.60,68.40,69.20,64.20,"2. Best Use of Science",70.80],
+  ["EQ-31","Debug industries",70.01,69.34,65.21,66.01,65.08,69.10,66.42,65.75,65.08,68.30,"1. Best Use of Data",70.01],
+  ["EQ-34","Robot planet Ecuador",52.81,52.94,64.81,63.21,68.28,67.50,67.02,68.15,68.28,69.70,"10. Most Inspirational",69.70],
+  ["EQ-12","Hydro space ikiam",68.20,68.60,64.60,66.00,66.80,64.40,64.00,66.40,66.80,64.20,"2. Best Use of Science",68.60],
+  ["EQ-29","Stars gate plus",57.81,57.74,61.41,62.01,66.88,67.30,64.02,66.95,66.88,68.50,"10. Most Inspirational",68.50],
+  ["EQ-13","Nantu phase",39.38,36.72,38.18,37.18,35.84,51.80,44.16,38.50,35.84,51.00,"6. Best Storytelling",51.80],
+  ["EQ-11","Jaguar nova",1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,"1. Best Use of Data",1.00],
+];
+const RCOLS = [
+  {k:0,label:"ID",type:"s"},{k:1,label:"Equipo",type:"s"},
+  ...["Cat 1: Data","Cat 2: Science","Cat 3: Tech","Cat 4: Mission","Cat 5: Galactic","Cat 6: Story","Cat 7: Art","Cat 8: Global","Cat 9: Local","Cat 10: Insp"].map((l,i)=>({k:i+2,label:l,type:"n",cat:i+1})),
+  {k:12,label:"Mejor categoría",type:"cat"},{k:13,label:"Puntaje mejor cat.",type:"n"},
+];
+const WINNERS = Object.fromEntries(CATS.filter(c=>c.win).map(c=>[c.n,c.win.id]));
+const EXCL = new Set(TOP.filter(r=>r[7]).map(r=>r[0]));
+let rSort = {k:13, dir:-1};
+const catNum = s => parseInt(s,10);
+function renderRank(){
+  document.getElementById("rank-head").innerHTML = RCOLS.map(c=>{
+    const on = rSort.k===c.k, arr = on ? (rSort.dir<0?"▼":"▲") : "▼";
+    return `<th class="${c.type==="n"?"num":""}" ${on?`aria-sort="${rSort.dir<0?"descending":"ascending"}"`:""}><button type="button" data-k="${c.k}">${c.label}<span class="arr">${arr}</span></button></th>`;
+  }).join("");
+  const q = document.getElementById("rank-q").value.trim().toLowerCase();
+  const col = RCOLS.find(c=>c.k===rSort.k);
+  const rows = RANK.filter(r=>!q || r[0].toLowerCase().includes(q) || r[1].toLowerCase().includes(q)).sort((a,b)=>{
+    let x=a[rSort.k], y=b[rSort.k];
+    if(col.type==="cat"){x=catNum(x);y=catNum(y);}
+    const c = (col.type==="s") ? String(x).localeCompare(String(y),"es") : x-y;
+    return c*rSort.dir || b[13]-a[13];
+  });
+  document.getElementById("rank-count").textContent = `${rows.length} de ${RANK.length} equipos`;
+  document.getElementById("rank-body").innerHTML = rows.map(r=>{
+    const best = Math.max(...r.slice(2,12));
+    return `<tr class="${EXCL.has(r[0])?"ex":""}">` + RCOLS.map(c=>{
+      const v=r[c.k], cls=[c.type==="n"?"num":"", rSort.k===c.k?"sorted":""];
+      if(c.cat && WINNERS[c.cat]===r[0]) cls.push("won");
+      else if(c.cat && v===best) cls.push("best");
+      if(c.k===0) return `<td class="${cls.join(" ")}"><span class="id" style="margin:0">${v}</span></td>`;
+      if(c.k===1) return `<td class="${cls.join(" ")}"><span class="tm">${esc(v)}</span>${EXCL.has(r[0])?'<span class="ex-tag" style="margin-left:8px;font-size:10px">No considerado</span>':""}</td>`;
+      return `<td class="${cls.join(" ")}">${c.type==="n"?fmt(v):esc(v)}</td>`;
+    }).join("") + `</tr>`;
+  }).join("");
+}
+document.getElementById("rank-head").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-k]"); if(!b) return;
+  const k=+b.dataset.k, c=RCOLS.find(c=>c.k===k);
+  rSort = rSort.k===k ? {k, dir:-rSort.dir} : {k, dir: c.type==="n"?-1:1};
+  renderRank();
+});
+document.getElementById("rank-q").addEventListener("input",renderRank);
+renderRank();
+
+/* ===== SIMULACIÓN DE SELECCIÓN ===== */
+(function(){
+  const CN=["Data","Science","Tech","Mission","Galactic","Story","Art","Global","Local","Insp"];
+  const CFULL=CATS.map(c=>c.t);
+  // equipos: se excluyen los no considerados y los que no tienen calificación
+  const rows = RANK.filter(r=>r[0]!=="EQ-11").map(r=>({id:r[0],name:r[1],s:r.slice(2,12),ex:EXCL.has(r[0])}));
+  // algoritmo
+  const steps=[], usedT=new Set(), usedC=new Set();
+  while(usedC.size<10){
+    let best=null;
+    for(const t of rows){ if(t.ex||usedT.has(t.id)) continue;
+      t.s.forEach((v,c)=>{ if(usedC.has(c)) return; if(!best||v>best.v) best={t,c,v}; }); }
+    const ties=best.t.s.map((v,c)=>c).filter(c=>c!==best.c&&!usedC.has(c)&&best.t.s[c]===best.v);
+    steps.push({...best,ties});
+    usedT.add(best.t.id); usedC.add(best.c);
+  }
+  let k=0, timer=null;
+  const head=document.getElementById("sim-head"), body=document.getElementById("sim-body");
+  document.getElementById("sim-log").innerHTML=steps.map((s,i)=>`<li>${esc(s.t.name)} → ${esc(CFULL[s.c])} <span>${fmt(s.v)}</span></li>`).join("");
+  function draw(){
+    const done=steps.slice(0,k), cur=done[k-1];
+    const tDone=new Map(done.map(s=>[s.t.id,s])), cDone=new Map(done.map(s=>[s.c,s]));
+    head.innerHTML=`<tr><th style="text-align:left">Equipo</th>${CN.map((n,c)=>`<th class="${cDone.has(c)?"cat-done":""}">${c+1}. ${n}</th>`).join("")}</tr>`;
+    body.innerHTML=rows.map(t=>{
+      const tw=tDone.get(t.id);
+      const rc=t.ex?"excl":tw?"row-done":"";
+      return `<tr class="${rc}"><td class="team">${esc(t.name)}${t.ex?' · no considerado':''}</td>${t.s.map((v,c)=>{
+        let cl="";
+        if(!t.ex){
+          if(cur&&cur.t.id===t.id&&cur.c===c) cl="cur";
+          else if(tw&&tw.c===c) cl="won";
+          else if(tw||cDone.has(c)) cl="dead";
+        }
+        return `<td class="${cl}">${fmt(v)}</td>`;
+      }).join("")}</tr>`;
+    }).join("");
+    document.getElementById("sim-step").textContent=`Paso ${k} de ${steps.length}`;
+    const msg=document.getElementById("sim-msg");
+    if(!cur) msg.innerHTML=`Tabla completa con ${rows.length-1} equipos que participan. BDB Innovations aparece en rojo y no entra en la selección. Presiona <b>Siguiente paso</b> para elegir al primer ganador.`;
+    else {
+      const left=10-k;
+      let t=`<b>Paso ${k}:</b> la nota más alta disponible es <b>${fmt(cur.v)}</b>. <b>${esc(cur.t.name)}</b> gana <b>${esc(CFULL[cur.c])}</b>. `;
+      if(cur.ties.length) t+=`Tenía la misma nota en ${cur.ties.map(c=>esc(CFULL[c])).join(", ")}; se toma la categoría de menor número. `;
+      t+= left ? `Se eliminan su fila y la columna de la categoría. Quedan ${left} categorías.` : `Las 10 categorías ya tienen ganador.`;
+      msg.innerHTML=t;
+      const cell=body.querySelector("td.cur"); if(cell) cell.scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});
+    }
+    document.querySelectorAll("#sim-log li").forEach((li,i)=>{li.className=i<k-1?"done":i===k-1?"now":"";});
+    document.getElementById("sim-prev").disabled=k===0;
+    document.getElementById("sim-next").disabled=k===steps.length;
+  }
+  function stop(){clearInterval(timer);timer=null;document.getElementById("sim-play").textContent="Reproducir";}
+  document.getElementById("sim-next").onclick=()=>{stop();if(k<steps.length){k++;draw();}};
+  document.getElementById("sim-prev").onclick=()=>{stop();if(k>0){k--;draw();}};
+  document.getElementById("sim-reset").onclick=()=>{stop();k=0;draw();};
+  document.getElementById("sim-play").onclick=()=>{
+    if(timer){stop();return;}
+    if(k===steps.length)k=0;
+    document.getElementById("sim-play").textContent="Pausar";
+    timer=setInterval(()=>{ if(k>=steps.length){stop();return;} k++;draw(); },1800);
+  };
+  draw();
+})();
+
+/* ===== CEREMONIA ===== */
+const app=document.getElementById("app");
+const reveals=()=>[...document.querySelectorAll(".reveal")];
+function show(el){ if(!el.classList.contains("hidden")) return; el.classList.remove("hidden"); el.classList.add("shown"); }
+reveals().forEach(el=>{
+  el.addEventListener("click",()=>show(el));
+  el.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();show(el);} });
+});
+
+/* ===== ESTRELLAS ===== */
+(function(){
+  const c=document.getElementById("stars"), x=c.getContext("2d");
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let S=[],W,H;
+  function size(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio;
+    S=Array.from({length:Math.round(innerWidth*innerHeight/5000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3*devicePixelRatio+.2,p:Math.random()*6.28}));}
+  function draw(t){x.clearRect(0,0,W,H);for(const s of S){x.globalAlpha=.35+.35*Math.sin(t/900+s.p);x.fillStyle="#cfd8ff";x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill();}
+    if(!still)requestAnimationFrame(draw);}
+  addEventListener("resize",size);size();requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
